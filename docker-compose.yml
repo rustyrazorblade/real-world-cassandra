@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    pandoc:
+        build: "."
+
+        volumes:
+          - ./content:/source
+          - ./docs:/html
+
