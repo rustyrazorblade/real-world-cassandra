@@ -2,7 +2,7 @@
 
 cd /source
 
-CONTENT=$(ls content/*/*.md)
+CONTENT=$(ls chapters/*/*.md)
 
 
 /root/.cabal/bin/pandoc --toc -o /html/index.html $CONTENT
