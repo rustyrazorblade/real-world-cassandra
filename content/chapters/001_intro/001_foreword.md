@@ -1,0 +1,1 @@
+This book will focus on Current Cassandra.  Targeting the 4.0 release.
