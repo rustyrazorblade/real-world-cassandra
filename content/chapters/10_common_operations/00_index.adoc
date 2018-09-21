@@ -1,0 +1,4 @@
+= Common Operations
+
+include::01_starting_new_cluster.adoc[]
+

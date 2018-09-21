@@ -1,24 +1,36 @@
 version: '3'
 
 services:
-    pandoc:
-        build: "."
-
-        volumes:
-          - ./content:/source
-          - ./docs:/html
-          - ./:/book
-
     asciidoctor:
         image: asciidoctor/docker-asciidoctor
 
         volumes:
           - ./content:/documents
+          - ./docs:/html
 
     html:
         image: asciidoctor/docker-asciidoctor
 
         volumes:
-        - ./content:/documents
+          - ./content:/documents
+          - ./docs:/html
 
+        command: asciidoctor -o /html/index.html -d book index.adoc
 
+    pdf:
+        image: asciidoctor/docker-asciidoctor
+
+        volumes:
+          - ./content:/documents
+          - ./docs:/html
+
+        command: asciidoctor-pdf -o /html/index.pdf -d book index.adoc
+
+    epub:
+        image: asciidoctor/docker-asciidoctor
+
+        volumes:
+          - ./content:/documents
+          - ./docs:/html
+
+        command: asciidoctor-epub3 -o /html/index.epub -d book index.adoc

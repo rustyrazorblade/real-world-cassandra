@@ -1,5 +1,4 @@
-
-# Scaling
+== Scaling
 
 When I got interested in Cassandra, I was working at some startups that had tried to build scalable systems and had run into some trouble.  The scaling solution at the time was to chip away at the advantages of the RDBMS.
 

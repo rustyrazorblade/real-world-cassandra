@@ -1,3 +1,0 @@
-include::001_intro.adoc[]
-include::002_starting_new_cluster.adoc[]
-

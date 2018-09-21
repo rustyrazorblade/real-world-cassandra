@@ -1,0 +1,4 @@
+= Data Modeling
+
+include::01_tables.adoc[]
+

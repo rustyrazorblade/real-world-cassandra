@@ -1,9 +1,0 @@
-# Architecture
-
-
-
-## Shared Nothing
-
-SAN 
-
-VMS

@@ -1,0 +1,5 @@
+== Shared Nothing Architecture
+
+SAN 
+
+VMS
