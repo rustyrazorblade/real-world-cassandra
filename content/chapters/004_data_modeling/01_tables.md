@@ -1,6 +1,10 @@
----
-title: Tables
----
+# Data Modeling
+
+Rows
+ 
+What can we use as a sort date
+    
+
 
 You might recognize this syntax:
 
@@ -10,3 +14,28 @@ CREATE TABLE mytable (
     data blob
 );
 ```
+
+
+
+```text
+CREATE TABLE comlex (
+    id uuid,
+    bucket int,
+    data blob,
+    PRIMARY KEY (id, bucket)
+);
+```
+
+
+Partitions
+ sorted lists of rows
+
+```text
+CREATE TABLE sensor_data (
+  id uuid,
+  ts timestamp,
+  data blob
+) PRIMARY KEY (id, ts);
+```
+
+Clustering keys determine sorting order

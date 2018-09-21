@@ -4,7 +4,10 @@ title: Shared Nothing
 
 # Architecture
 
+
+
 ## Shared Nothing
 
-SAN
+SAN 
+
 VMS
