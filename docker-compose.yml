@@ -7,4 +7,5 @@ services:
         volumes:
           - ./content:/source
           - ./docs:/html
+          - ./:/book
 
