@@ -1,0 +1,5 @@
+include::001_shared_nothing.adoc[]
+include::002_token_ring.adoc[]
+include::003_writes.adoc[]
+include::004_writes.adoc[]
+

@@ -9,3 +9,16 @@ services:
           - ./docs:/html
           - ./:/book
 
+    asciidoctor:
+        image: asciidoctor/docker-asciidoctor
+
+        volumes:
+          - ./content:/documents
+
+    html:
+        image: asciidoctor/docker-asciidoctor
+
+        volumes:
+        - ./content:/documents
+
+
