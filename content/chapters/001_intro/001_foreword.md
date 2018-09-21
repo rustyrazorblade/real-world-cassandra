@@ -1,3 +1,10 @@
+---
+title: Mastering Cassandra
+author: Jon Haddad
+rights: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+language: en-US
+---
+
 This book will focus on the latest stable version of Apache Cassandra.  I'm targeting the most current release, which at the time of this writing is 4.0.  Once the next version is released, this book will be updated.
 
 This is an opinionated book.  I will not advise using features that perform poorly in production or have so many caveats that failure is almost unavoidable.  This is not the result of marketing, promises, or speculation.

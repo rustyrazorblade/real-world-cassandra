@@ -1,3 +1,4 @@
 /.idea/
 /docs
 mastering-cassandra.epub
+.DS_Store
