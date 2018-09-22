@@ -1,5 +1,9 @@
 == Shared Nothing Architecture
 
-SAN 
+One of the
+
+We
+
+SAN
 
 VMS
