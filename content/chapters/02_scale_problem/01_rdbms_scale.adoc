@@ -1,13 +1,38 @@
-== Scaling
+== Scaling, Old School
 
-When I got interested in Cassandra, I was working at some startups that had tried to build scalable systems and had run into some trouble.  The scaling solution at the time was to chip away at the advantages of the RDBMS.
+When I got interested in Cassandra, I was working at some startups that had tried to build scalable systems with tight SLAs and had run into some trouble.  This was a point in time when using a relational database and vertical scaling was the tried and true solution.
+
+Once we hit the limits of vertical scaling, the next step was to chip away at the advantages of the RDBMS.
+
+=== Caching
 
 First, we would introduce caching whenever possible.  Caching servers are easily scaled by partitioning the data among all the servers.  Splitting data among caching servers is easy.   This works great for read heavy workloads and scales linearly for a long time.
 
-Starting with aggregations and joins.  
+You've probably heard of one of the most well known caching projects of all time, Memcached.  Memcached made it possible to massively scale read heavy workloads by exposing a simple api.  The Memcached api only exposes a simple key/value api for setting and retrieving data.  The following (crappy) code shows the basic logic:
+
+```python
+def get_something(id):
+    tmp = memcached.get(key)
+    if(tmp):
+        return tmp
+    result = db.query("SELECT * from stuff WHERE id = " + id)
+    memcached.put(key, result)
+    return result
+```
+
+
+Starting with aggregations and joins.
+
+precalculate expensive queries rather than doing them on the fly
+
+basic statistics
+
+We start thinking about partitioning our data at this point.  Without joins, we can move tables to different machines without much problem.  We lose the ability to d
 
 querying single table
 
 querying single rows
 
 Hello
+
+Once we've
