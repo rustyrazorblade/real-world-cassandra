@@ -2,5 +2,4 @@
 
 include::01_foreword.adoc[]
 
-:toc:
 

@@ -15,7 +15,7 @@ services:
           - ./content:/documents
           - ./docs:/html
 
-        command: asciidoctor -o /html/index.html -d book index.adoc
+        command: asciidoctor -o /html/index.html -d book -a toc=left index.adoc
 
     pdf:
         image: asciidoctor/docker-asciidoctor
