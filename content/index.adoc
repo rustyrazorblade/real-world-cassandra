@@ -1,5 +1,9 @@
+:toc: left
+:numbered:
+
 = Mastering Cassandra
 Jon Haddad <jon@jonhaddad.com>
+
 
 include::chapters/01_intro/00_index.adoc[]
 include::chapters/02_scale_problem/00_index.adoc[]
