@@ -1,7 +1,10 @@
 = The Fundamentals of Cassandra
 
 include::01_shared_nothing.adoc[]
+
 include::02_token_ring.adoc[]
+
 include::03_writes.adoc[]
+
 include::04_reads.adoc[]
 

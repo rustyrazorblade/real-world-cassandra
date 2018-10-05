@@ -1,3 +1,4 @@
 = The Scale Problem
 
 include::01_rdbms_scale.adoc[]
+
