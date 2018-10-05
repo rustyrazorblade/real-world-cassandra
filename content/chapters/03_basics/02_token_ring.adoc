@@ -1,4 +1,8 @@
 == Token Ring
 
-test
+distributed hash table
+
+each node has one or more tokens
+
+
 

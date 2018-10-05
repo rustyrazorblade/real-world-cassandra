@@ -3,5 +3,11 @@
 === Replication Strategies
 
 
-Simple Strategy
+==== Simple Strategy
+
+
+
+==== Network Topology Strategy
+
+
 
