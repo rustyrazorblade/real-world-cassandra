@@ -13,5 +13,7 @@ include::chapters/03_basics/00_index.adoc[]
 
 include::chapters/04_data_modeling/00_index.adoc[]
 
+include::chapters/05_getting_started/00_index.adoc[]
+
 include::chapters/10_common_operations/00_index.adoc[]
 
