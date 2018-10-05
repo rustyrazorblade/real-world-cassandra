@@ -1,4 +1,6 @@
 = Data Modeling
 
-include::01_tables.adoc[]
+include::01_keyspaces.adoc[]
+
+include::02_tables.adoc[]
 
