@@ -1,8 +1,6 @@
 = Mastering Cassandra
 Jon Haddad <jon@jonhaddad.com>
 
-:toc:
-
 include::chapters/01_intro/00_index.adoc[]
 include::chapters/02_scale_problem/00_index.adoc[]
 include::chapters/03_basics/00_index.adoc[]
