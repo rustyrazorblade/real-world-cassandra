@@ -8,8 +8,11 @@ Given the choice, if you're buying your own hardware, opt for a simple design.  
 
 === Hardware Recommendations
 
-8-16 cores
-32-64 GB RAM
+
+CPUs, 8-16 cores
+
+When it comes to memory, think 32-64 GB RAM.  Cassandra should be given a minimum of 8GB RAM, plus extra memory for various caches.
+
 SSD, NVMe preferred
 
 

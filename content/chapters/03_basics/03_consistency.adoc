@@ -1,0 +1,7 @@
+== Consistency
+
+Writes can go to any node
+
+
+
+

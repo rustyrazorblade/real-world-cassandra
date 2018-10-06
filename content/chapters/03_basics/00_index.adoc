@@ -4,7 +4,7 @@ include::01_shared_nothing.adoc[]
 
 include::02_token_ring.adoc[]
 
-include::03_eventual_consistency.adoc[]
+include::03_consistency.adoc[]
 
 include::04_writes.adoc[]
 
