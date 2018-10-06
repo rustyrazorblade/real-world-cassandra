@@ -1,12 +1,15 @@
 == Shared Nothing Architecture
 
-One of the
+One of the most interesting aspects of Cassandra is that it's designed to run on cheap hardware and scales horizontally rather than vertically.  That means instead of buying more and more expensive servers we buy a bunch of cheap servers.  We don't rely on expensive SANs or other types of complex shared storage.
 
-We
+Each node should have it's own storage, and ideally be dedicated hardware.  While it's possible to run Cassandra on virtual machines, usually that's just adding unnecessary overhead.
 
-SAN
+Given the choice, if you're buying your own hardware, opt for a simple design.  That doesn't mean use your old Pentium desktops and 5400 RPM disks though.
 
-VMS
+=== Hardware Recommendations
+
+8-16 cores
+32-64 GB RAM
+SSD, NVMe preferred
 
 
-nodes
