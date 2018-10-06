@@ -1,0 +1,9 @@
+== CCM
+
+CCM is a useful tool for creating local clusters for testing.
+
+You can get the source here https://github.com/riptano/ccm
+
+```bash
+pip install ccm
+```
