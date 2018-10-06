@@ -21,7 +21,8 @@ CREATE TABLE mytable (
 === Partition Key
 
 
-Partition key can be composed of one or more fields.  These fields are hashed to give us a token, and that token determines the replicas that a given partition lives on.
+
+Partition key can be composed of one or more fields.  These fields are hashed to give us a token, which cooresponds to a position in the <<Token Ring>>, and that determines the replicas that a given partition lives on.
 
 
 === Clustering Keys

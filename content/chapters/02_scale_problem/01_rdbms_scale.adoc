@@ -6,7 +6,9 @@ Once we hit the limits of vertical scaling, the next step was to chip away at th
 
 === Caching
 
-First, we would introduce caching whenever possible.  Caching servers are easily scaled by partitioning the data among all the servers.  Splitting data among caching servers is easy.   This works great for read heavy workloads and scales linearly for a long time.
+The first (and easiest) problem that needed to be solved was dealing with read heavy workload.  Fortunately, solving reads is usually solved by making more copies of the data and using more servers, in the form of caching.
+
+Caching servers are easily scaled by partitioning the data among all the servers.  Splitting data among caching servers is easy.   This works great for read heavy workloads and scales linearly for a long time.
 
 You've probably heard of one of the most well known caching projects of all time, Memcached.  Memcached made it possible to massively scale read heavy workloads by exposing a simple api.  The Memcached api only exposes a simple key/value api for setting and retrieving data.  The following (crappy) code shows the basic logic:
 
