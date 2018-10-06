@@ -6,5 +6,7 @@ include::01_downloading.adoc[]
 
 include::02_ccm.adoc[]
 
+include::10_create_first_keyspace.adoc[]
+
 
 
