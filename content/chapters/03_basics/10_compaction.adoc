@@ -1,0 +1,28 @@
+= Compaction
+
+Compaction is merging sstables.
+
+
+Multiple compactions strategies
+
+
+== Size Tiered Compaction Strategy (STCS)
+
+default, not great at much
+
+buckets
+
+
+== Leveled Compaction Stategy (LCS)
+
+Leveled
+
+fixed size
+
+
+
+== Time Series Compaction Strategy (TWCS)
+
+Built originally by Jeff Jirsa, a Cassandra committer.
+
+Groups sstables into windows by using the max timestamp of all the cells in the sstable.
