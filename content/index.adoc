@@ -1,5 +1,6 @@
 :toc: left
 :numbered:
+:icons: font
 
 = Mastering Cassandra
 Jon Haddad <jon@jonhaddad.com>

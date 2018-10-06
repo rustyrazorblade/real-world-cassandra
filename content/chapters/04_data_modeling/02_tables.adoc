@@ -7,7 +7,6 @@ Tables contain rows
 Unlike a traditional relational database, we need to specify how we want our data partitioned across
  
 What can we use as a sort date
-    
 
 
 You might recognize this syntax:
@@ -19,7 +18,15 @@ CREATE TABLE mytable (
 );
 ```
 
+=== Partition Key
 
+
+Partition key can be composed of one or more fields.  These fields are hashed to give us a token, and that token determines the replicas that a given partition lives on.
+
+
+=== Clustering Keys
+
+Clustering keys determine sorting order
 
 ```text
 CREATE TABLE comlex (
@@ -42,4 +49,3 @@ CREATE TABLE sensor_data (
 ) PRIMARY KEY (id, ts);
 ```
 
-Clustering keys determine sorting order
