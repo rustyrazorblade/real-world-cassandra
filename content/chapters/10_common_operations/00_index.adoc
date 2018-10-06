@@ -2,3 +2,6 @@
 
 include::01_starting_new_cluster.adoc[]
 
+include::10_adding_datacenter.adoc[]
+
+
