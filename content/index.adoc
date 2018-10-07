@@ -14,7 +14,7 @@ include::chapters/03_getting_started/00_index.adoc[]
 
 include::chapters/04_distributed_architecture/00_index.adoc[]
 
-include::chapters/05_storage_engine/00_index.adoc[]
+include::chapters/10_storage_engine/00_index.adoc[]
 
 include::chapters/15_data_modeling/00_index.adoc[]
 
