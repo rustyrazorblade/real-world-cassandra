@@ -1,4 +1,4 @@
-== Download
+== Downloading The Latest Release
 
 Here we'll download
 
@@ -12,11 +12,13 @@ Download from one the mirrors.
 
 Once the download finishes
 
+At the time of this writing, the latest version is 3.11.3.  Untar the archive:
 
 ```bash
 $ tar -zxvf apache-cassandra-3.11.3-bin.tar.gz
 ```
 
+Go into the directory and start Cassandra:
 
 ```bash
 $ cd apache-cassandra-3.11.3
@@ -25,4 +27,21 @@ $ bin/cassandra -f
 
 This will launch Cassandra in the foreground.
 
-You can control-c to stop.
+Open another terminal, go into the same directory and do the following:
+
+```bash
+$ bin/cqlsh
+```
+
+cqlsh will start up, and as long as the Cassandra server is running you'll see something like the following:
+
+```bash
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.3 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh>
+```
+
+You are now connected to Cassandra.
+
+Switch back to the terminal running Cassandra and press control-c to stop.
