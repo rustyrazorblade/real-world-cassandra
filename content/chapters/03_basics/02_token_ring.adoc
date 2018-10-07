@@ -1,8 +1,0 @@
-== Token Ring
-
-distributed hash table
-
-each node has one or more tokens
-
-
-

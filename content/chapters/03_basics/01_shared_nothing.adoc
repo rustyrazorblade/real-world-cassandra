@@ -1,4 +1,4 @@
-== Shared Nothing Architecture
+== Shared Nothing Design
 
 One of the most interesting aspects of Cassandra is that it's designed to run on cheap hardware and scales horizontally rather than vertically.  That means instead of buying more and more expensive servers we buy a bunch of cheap servers.  We don't rely on expensive SANs or other types of complex shared storage.
 
@@ -6,13 +6,21 @@ Each node should have it's own storage, and ideally be dedicated hardware.  Whil
 
 Given the choice, if you're buying your own hardware, opt for a simple design.  That doesn't mean use your old Pentium desktops and 5400 RPM disks though.
 
-=== Hardware Recommendations
+TIP: It's easy to want to use epic hardware when setting up your Cassandra cluster, but it's unnecessary.  We recommend aiming for 8-16 CPU threads and 32-64 GB RAM.  We recommend using SSDs, they've come down a lot in price a ton and make a huge difference.  Friends don't let friends use spinning rust.
 
 
-CPUs, 8-16 cores
+=== Token Ring
 
-When it comes to memory, think 32-64 GB RAM.  Cassandra should be given a minimum of 8GB RAM, plus extra memory for various caches.
+distributed hash table
 
-SSD, NVMe preferred
+each node has one or more tokens
+
+
+
+=== Consistency
+
+Writes can go to any node
+
+
 
 
