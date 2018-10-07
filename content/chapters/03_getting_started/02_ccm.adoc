@@ -7,3 +7,18 @@ You can get the source here https://github.com/riptano/ccm
 ```bash
 pip install ccm
 ```
+
+
+
+```bash
+$ ccm create -n 3 -v 3.11.3 mc
+Current cluster is now: mc
+```
+
+You can start your cluster:
+
+```bash
+$ ccm start
+```
+
+We'll be referencing this test cluster in the next chapter.

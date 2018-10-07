@@ -1,5 +1,28 @@
 == Download
 
-test
+Here we'll download
+
+Go to https://cassandra.apache.org/
+
+Click download
+
+go to latest version, click the version number to download.
+
+Download from one the mirrors.
+
+Once the download finishes
 
 
+```bash
+$ tar -zxvf apache-cassandra-3.11.3-bin.tar.gz
+```
+
+
+```bash
+$ cd apache-cassandra-3.11.3
+$ bin/cassandra -f
+```
+
+This will launch Cassandra in the foreground.
+
+You can control-c to stop.

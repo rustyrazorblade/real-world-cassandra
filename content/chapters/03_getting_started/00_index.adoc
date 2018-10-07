@@ -2,6 +2,9 @@
 
 This chapter will help you get started using Apache Cassandra on your local environment to learn the basics.  We'll start by running a single node then graduate to running a small dev cluster.
 
+
+Along the way in this book there will be exercises,
+
 include::01_downloading.adoc[]
 
 include::02_ccm.adoc[]
