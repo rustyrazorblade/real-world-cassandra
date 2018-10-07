@@ -17,9 +17,6 @@ each node has one or more tokens
 
 
 
-=== Consistency
-
-Writes can go to any node
 
 
 

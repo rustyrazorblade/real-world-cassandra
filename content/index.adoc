@@ -10,14 +10,15 @@ include::chapters/01_intro/00_index.adoc[]
 
 include::chapters/02_scale_problem/00_index.adoc[]
 
-include::chapters/03_distributed_architecture/00_index.adoc[]
+include::chapters/03_getting_started/00_index.adoc[]
+
+include::chapters/04_distributed_architecture/00_index.adoc[]
 
 include::chapters/05_storage_engine/00_index.adoc[]
 
-include::chapters/06_data_modeling/00_index.adoc[]
+include::chapters/15_data_modeling/00_index.adoc[]
 
-include::chapters/07_getting_started/00_index.adoc[]
 
-include::chapters/10_common_operations/00_index.adoc[]
+include::chapters/20_common_operations/00_index.adoc[]
 
-include::chapters/20_performance_tuning/00_index.adoc[]
+include::chapters/30_performance_tuning/00_index.adoc[]
