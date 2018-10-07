@@ -12,9 +12,11 @@ include::chapters/02_scale_problem/00_index.adoc[]
 
 include::chapters/03_distributed_architecture/00_index.adoc[]
 
-include::chapters/04_data_modeling/00_index.adoc[]
+include::chapters/05_storage_engine/00_index.adoc[]
 
-include::chapters/05_getting_started/00_index.adoc[]
+include::chapters/06_data_modeling/00_index.adoc[]
+
+include::chapters/07_getting_started/00_index.adoc[]
 
 include::chapters/10_common_operations/00_index.adoc[]
 

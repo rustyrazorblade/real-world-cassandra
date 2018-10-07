@@ -1,4 +1,4 @@
-= Compaction
+== Compaction
 
 Compaction is merging sstables.
 
@@ -6,14 +6,14 @@ Compaction is merging sstables.
 Multiple compactions strategies
 
 
-== Size Tiered Compaction Strategy (STCS)
+=== Size Tiered Compaction Strategy (STCS)
 
 default, not great at much
 
 buckets
 
 
-== Leveled Compaction Stategy (LCS)
+=== Leveled Compaction Stategy (LCS)
 
 Leveled
 
@@ -21,7 +21,7 @@ fixed size
 
 
 
-== Time Series Compaction Strategy (TWCS)
+=== Time Series Compaction Strategy (TWCS)
 
 Built originally by Jeff Jirsa, a Cassandra committer.
 
