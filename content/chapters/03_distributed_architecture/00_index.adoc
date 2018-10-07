@@ -1,4 +1,4 @@
-= Cassandra Architecture
+= Distributed Architecture
 
 include::01_shared_nothing.adoc[]
 

@@ -10,7 +10,7 @@ include::chapters/01_intro/00_index.adoc[]
 
 include::chapters/02_scale_problem/00_index.adoc[]
 
-include::chapters/03_basics/00_index.adoc[]
+include::chapters/03_distributed_architecture/00_index.adoc[]
 
 include::chapters/04_data_modeling/00_index.adoc[]
 
