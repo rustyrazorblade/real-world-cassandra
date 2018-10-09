@@ -8,14 +8,24 @@ You can get the source here https://github.com/riptano/ccm
 pip install ccm
 ```
 
+ccm uses loopback aliases to run several Cassandra instances on one machine.  We'll get into the details of how this actually works when we start looking at configuration file options.  For now, just set them up with this in your shell:
 
+```bash
+sudo ifconfig lo0 alias 127.0.0.2 up
+sudo ifconfig lo0 alias 127.0.0.3 up
+sudo ifconfig lo0 alias 127.0.0.4 up
+sudo ifconfig lo0 alias 127.0.0.5 up
+sudo ifconfig lo0 alias 127.0.0.6 up
+```
+
+Now you can create a cluster.  We'll create a single DC cluster with 3 nodes running 3.11.3:
 
 ```bash
 $ ccm create -n 3 -v 3.11.3 mc
 Current cluster is now: mc
 ```
 
-You can start your cluster:
+Now you can start your cluster:
 
 ```bash
 $ ccm start
