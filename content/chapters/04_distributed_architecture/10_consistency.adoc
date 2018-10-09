@@ -8,7 +8,7 @@ In the case of a write, consistency defines the number of nodes that must acknow
 In the case of a read, consistency defines the number of nodes that are queried, and in the case of an inconsistency, a read repair is performed.
 
 
-== ONE
+== ONE and LOCAL_ONE
 
 Only one node is
 
@@ -16,7 +16,7 @@ Only one node is
 
 
 
-== QUORUM
+== QUORUM and LOCAL_QUORUM
 
 
 

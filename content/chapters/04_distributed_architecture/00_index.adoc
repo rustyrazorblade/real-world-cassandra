@@ -8,3 +8,4 @@ include::04_writes.adoc[]
 include::05_reads.adoc[]
 
 
+include::10_consistency.adoc[]

@@ -1,4 +1,4 @@
-== CCM
+== Starting a Cluster with CCM
 
 CCM is a useful tool for creating local clusters for testing.
 
