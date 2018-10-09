@@ -1,3 +1,9 @@
 = Storage Engine
 
+include::03_commitlog.adoc[]
+
+include::05_memtable.adoc[]
+
+include::06_sstable.adoc[]
+
 include::10_compaction.adoc[]
