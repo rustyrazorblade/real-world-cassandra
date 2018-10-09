@@ -1,3 +1,7 @@
 == How Writes Work
 
+Write begins at a <<coordinator>>.
+
+Client
+
 

@@ -1,5 +1,5 @@
 [glossary]
 = Glossary
 
-Coordinator:: The node that recieves the request from a client.
+Coordinator[[coordinator]]:: The node that recieves the request from a client.
 

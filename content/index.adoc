@@ -1,6 +1,7 @@
 :toc: left
 :numbered:
 :icons: font
+:sectanchors:
 
 = Mastering Cassandra
 Jon Haddad <jon@jonhaddad.com>
