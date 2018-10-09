@@ -22,3 +22,5 @@ include::chapters/15_data_modeling/00_index.adoc[]
 include::chapters/20_common_operations/00_index.adoc[]
 
 include::chapters/30_performance_tuning/00_index.adoc[]
+
+include::chapters/99_glossary/00_index.adoc[]
