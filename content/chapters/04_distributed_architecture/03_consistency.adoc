@@ -10,10 +10,11 @@ In the case of a read, consistency defines the number of nodes that are queried,
 
 === ONE and LOCAL_ONE
 
-Only one node is
+Only one node is required to acknowledge the write for the <<coordinator>> to return a success message to the client.
 
 === ALL
 
+All nodes are required to acknowledge the write for the <<coordinator>> to return a success message to the client.
 
 
 === QUORUM and LOCAL_QUORUM
