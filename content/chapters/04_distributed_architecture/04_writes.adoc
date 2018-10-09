@@ -1,7 +1,8 @@
 == How Writes Work
 
-Write begins at a <<coordinator>>.
+Write begins at a <<coordinator>>.  Every node in the cluster acts as a coordinator, it's not a special type of node.
 
-Client
+
+The <<Consistency Level>>
 
 

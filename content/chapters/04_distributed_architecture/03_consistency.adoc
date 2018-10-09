@@ -1,4 +1,4 @@
-= Consistency
+== Consistency Levels
 
 Writes can go to any node
 
