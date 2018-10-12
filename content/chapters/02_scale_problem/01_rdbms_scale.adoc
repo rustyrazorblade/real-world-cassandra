@@ -26,12 +26,7 @@ This is fine for small objects / rows, but doesn't work so well with large datas
 
 As the system grows and our SLAs remain the same, we have to start using optimizations to avoid performing the costly operations.  Instead of using expensive joins, we denormalize and copy data around to avoid the costly join.  Instead of aggregating on the fly we precalculate statistics.  We can skip grouping hundreds of thousands (or millions) and return a handful of rows, which can be orders of magnitude faster than trying to do the calculation on the fly.
 
-We start thinking about partitioning our data at this point.  Without joins, we can move tables to different machines without much problem.  We lose the ability to d
+When it comes to scaling reads, this is a proven path.  The difficulty arises when we have more work than the server is capable of handling.  Scaling vertically works to a point, but gets very expensive and migrations are risky.  Since we've already decoupled the tables from one another by eliminating joins, the next logical step is to start separating the tables.  First we move individual tables off, then usually the tables get sharded across many servers.  Lots of tooling gets written, https://eng.uber.com/mysql-migration/[wheels reinvented].
 
-querying single table
+We start thinking about partitioning our data at this point.  Without joins, we can move tables to different machines without much problem.  We're able to keep scaling our application at the cost of losing the ability to do arbitrary queries.  It's a necessary tradeoff if we're to keep growing.
 
-querying single rows
-
-Hello
-
-Once we've
