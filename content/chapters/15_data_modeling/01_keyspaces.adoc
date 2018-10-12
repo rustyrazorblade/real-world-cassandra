@@ -1,5 +1,7 @@
 == Keyspaces
 
+As I discussed in the <<Replication>> chapter, the settings on the keyspace determine how data is replicated around the cluster.
+
 === Replication Strategies
 
 
