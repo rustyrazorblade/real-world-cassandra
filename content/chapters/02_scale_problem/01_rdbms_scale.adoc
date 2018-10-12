@@ -22,12 +22,9 @@ def get_something(id):
     return result
 ```
 
+This is fine for small objects / rows, but doesn't work so well with large datasets that are joined and aggregated.  How do we know what cache items to expire when a single row changes?  We still have a problem with more complex workloads.
 
-Starting with aggregations and joins.
-
-precalculate expensive queries rather than doing them on the fly
-
-basic statistics
+As the system grows and our SLAs remain the same, we have to start using optimizations to avoid performing the costly operations.  Instead of using expensive joins, we denormalize and copy data around to avoid the costly join.  Instead of aggregating on the fly we precalculate statistics.  We can skip grouping hundreds of thousands (or millions) and return a handful of rows, which can be orders of magnitude faster than trying to do the calculation on the fly.
 
 We start thinking about partitioning our data at this point.  Without joins, we can move tables to different machines without much problem.  We lose the ability to d
 
