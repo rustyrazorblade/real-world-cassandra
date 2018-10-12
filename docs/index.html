@@ -447,6 +447,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_scaling_old_school">1. Scaling, Old School</a>
 <ul class="sectlevel2">
 <li><a href="#_caching">1.1. Caching</a></li>
+<li><a href="#_scaling_writes">1.2. Scaling Writes</a></li>
+<li><a href="#_high_availability">1.3. High Availability</a></li>
 </ul>
 </li>
 </ul>
@@ -572,12 +574,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>As the system grows and our SLAs remain the same, we have to start using optimizations to avoid performing the costly operations.  Instead of using expensive joins, we denormalize and copy data around to avoid the costly join.  Instead of aggregating on the fly we precalculate statistics.  We can skip grouping hundreds of thousands (or millions) and return a handful of rows, which can be orders of magnitude faster than trying to do the calculation on the fly.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_scaling_writes"><a class="anchor" href="#_scaling_writes"></a>1.2. Scaling Writes</h3>
 <div class="paragraph">
 <p>When it comes to scaling reads, this is a proven path.  The difficulty arises when we have more work than the server is capable of handling.  Scaling vertically works to a point, but gets very expensive and migrations are risky.  Since we&#8217;ve already decoupled the tables from one another by eliminating joins, the next logical step is to start separating the tables.  First we move individual tables off, then usually the tables get sharded across many servers.  Lots of tooling gets written, <a href="https://eng.uber.com/mysql-migration/">wheels reinvented</a>.</p>
 </div>
 <div class="paragraph">
 <p>We start thinking about partitioning our data at this point.  Without joins, we can move tables to different machines without much problem.  We&#8217;re able to keep scaling our application at the cost of losing the ability to do arbitrary queries.  It&#8217;s a necessary tradeoff if we&#8217;re to keep growing.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_high_availability"><a class="anchor" href="#_high_availability"></a>1.3. High Availability</h3>
 <div class="paragraph">
 <p>Hopefully i</p>
 </div>
