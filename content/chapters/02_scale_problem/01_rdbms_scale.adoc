@@ -35,4 +35,4 @@ We start thinking about partitioning our data at this point.  Without joins, we 
 
 === High Availability
 
-
+The final challenge of scaling is availability.  All of the changes I've described above are designed to help scale the database by spreading the workload from one server to many.  By eliminating costly queries over large data sets we are able to keep our query times constant, and stick to our SLA.
