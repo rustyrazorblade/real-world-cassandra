@@ -1,7 +1,6 @@
 == Compaction
 
-Compaction is merging sstables.
-
+Compaction is the process of merging sstables.  There seems to be a misconception that compaction is optional, or that it shouldn't be running.  This is far from the truth.  On a healthy system receiving writes, expect to see plenty of active compactions.
 
 
 
