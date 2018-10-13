@@ -1,1 +1,10 @@
 == Commit Log
+
+The commit log is probably one of the more boring aspects of a database but is essential if we want to ensure we're able to recover our writes after a node has restarted unexpectedly.  Writes in the commitlog will be replayed when the node starts back up.
+
+
+The commit log can be disabled at the keyspace level.
+
+Cassandra has a change data capture feature that might be useful for certain use cases.  CDC is frequently used to propogate changes to other systems.  When CDC is enabled, commit log segments will be moved to a `cdc_raw` directory, which can then be processed by leveraging the `CommitLogReader`.
+
+CDC is an advanced topic, I'll discuss it further in a later chapter.  For _most_ use cases there's almost always a better alternative.

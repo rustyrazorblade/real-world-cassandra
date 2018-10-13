@@ -3,4 +3,4 @@
 include::01_rdbms_scale.adoc[]
 
 
-Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.  There's (usually) no need to home roll tools to move data around.  
+Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.  There's (usually) no need to home roll tools to move data around.

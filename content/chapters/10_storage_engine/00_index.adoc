@@ -1,5 +1,16 @@
 = Storage Engine
 
+Cassandra's storage engine is implemented as a Log Structured Merge Tree, which has some interesting qualities.  We'll dig into that in this chapter.  At the end of this chapter you should have a good understanding of the different components of the storage engine.
+
+
+Incoming writes are first written to a <<Commit Log>>.  This is pretty straightforward, if you've used other databases this should be familiar territory.
+
+Once the commit log has been written to, data is then written to an in memory structure called a <<Memtable>>.
+
+The <<Memtable>> is later flushed to disk, to a file called an SSTable.  There are some additional files that might be written out to accompany the SSTable, we'll cover that in the <<SSTable>> chapter.
+
+Let's look at each component in a little more detail.
+
 include::03_commitlog.adoc[]
 
 include::05_memtable.adoc[]

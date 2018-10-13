@@ -1,1 +1,13 @@
 == SSTable
+
+Data files on disk.
+
+Bloom filter: na-10-big-Filter.db
+
+Data file na-9-big-Data.db
+
+na-9-big-CompressionInfo.db
+
+na-9-big-Statistics.db
+
+Partition index na-9-big-Index.db

@@ -1,1 +1,4 @@
 == Memtable
+
+
+Think of Cassandra as a big write-back cache.  Writes are only held in memory (and in the commit log), they're not written to a permanent data structure right away.  When the cache (memtable) is full, it gets flushed to disk as an <<SSTable>> and is later merged with other SSTables as part of the <<Compaction>> process.
