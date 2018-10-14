@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Jon Haddad">
-<title>Mastering Cassandra</title>
+<title>Real World Cassandra</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Mastering Cassandra</h1>
+<h1>Real World Cassandra</h1>
 <div class="details">
 <span id="author" class="author">Jon Haddad</span><br>
 <span id="email" class="email"><a href="mailto:jon@jonhaddad.com">jon@jonhaddad.com</a></span><br>
@@ -806,29 +806,78 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <h1 id="_storage_engine" class="sect0"><a class="anchor" href="#_storage_engine"></a>Storage Engine</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>Cassandra&#8217;s storage engine is implemented as a Log Structured Merge Tree, which has some interesting qualities.  We&#8217;ll dig into that in this chapter.  At the end of this chapter you should have a good understanding of the different components of the storage engine.</p>
+</div>
+<div class="paragraph">
+<p>Incoming writes are first written to a <a href="#_commit_log">Commit Log</a>.  This is pretty straightforward, if you&#8217;ve used other databases this should be familiar territory.</p>
+</div>
+<div class="paragraph">
+<p>Once the commit log has been written to, data is then written to an in memory structure called a <a href="#_memtable">Memtable</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="#_memtable">Memtable</a> is later flushed to disk, to a file called an SSTable.  There are some additional files that might be written out to accompany the SSTable, we&#8217;ll cover that in the <a href="#_sstable">SSTable</a> chapter.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at each component in a little more detail.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_commit_log"><a class="anchor" href="#_commit_log"></a>8. Commit Log</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>The commit log is probably one of the more boring aspects of a database but is essential if we want to ensure we&#8217;re able to recover our writes after a node has restarted unexpectedly.  Writes in the commitlog will be replayed when the node starts back up.</p>
+</div>
+<div class="paragraph">
+<p>The commit log can be disabled at the keyspace level.</p>
+</div>
+<div class="paragraph">
+<p>Cassandra has a change data capture feature that might be useful for certain use cases.  CDC is frequently used to propogate changes to other systems.  When CDC is enabled, commit log segments will be moved to a <code>cdc_raw</code> directory, which can then be processed by leveraging the <code>CommitLogReader</code>.</p>
+</div>
+<div class="paragraph">
+<p>CDC is an advanced topic, I&#8217;ll discuss it further in a later chapter.  For <em>most</em> use cases there&#8217;s almost always a better alternative.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_memtable"><a class="anchor" href="#_memtable"></a>9. Memtable</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Think of Cassandra as a big write-back cache.  Writes are only held in memory (and in the commit log), they&#8217;re not written to a permanent data structure right away.  When the cache (memtable) is full, it gets flushed to disk as an <a href="#_sstable">SSTable</a> and is later merged with other SSTables as part of the <a href="#_compaction">Compaction</a> process.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_sstable"><a class="anchor" href="#_sstable"></a>10. SSTable</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Data files on disk.</p>
+</div>
+<div class="paragraph">
+<p>Bloom filter: na-10-big-Filter.db</p>
+</div>
+<div class="paragraph">
+<p>Data file na-9-big-Data.db</p>
+</div>
+<div class="paragraph">
+<p>na-9-big-CompressionInfo.db</p>
+</div>
+<div class="paragraph">
+<p>na-9-big-Statistics.db</p>
+</div>
+<div class="paragraph">
+<p>Partition index na-9-big-Index.db</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_compaction"><a class="anchor" href="#_compaction"></a>11. Compaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Compaction is merging sstables.</p>
+<p>Compaction is the process of merging sstables.  There seems to be a misconception that compaction is optional, or that it shouldn&#8217;t be running.  This is far from the truth.  On a healthy system receiving writes, expect to see plenty of active compactions.</p>
 </div>
 <div class="sect2">
 <h3 id="_compaction_strategies"><a class="anchor" href="#_compaction_strategies"></a>11.1. Compaction Strategies</h3>
@@ -1009,7 +1058,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-09 02:32:10 UTC
+Last updated 2018-10-14 03:27:49 UTC
 </div>
 </div>
 </body>

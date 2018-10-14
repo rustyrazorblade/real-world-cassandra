@@ -3,7 +3,7 @@
 :icons: font
 :sectanchors:
 
-= Mastering Cassandra
+= Real World Cassandra
 Jon Haddad <jon@jonhaddad.com>
 
 
