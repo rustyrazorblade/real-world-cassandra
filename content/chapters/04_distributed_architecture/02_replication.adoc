@@ -2,3 +2,11 @@
 
 
 At the <<Keyspace>> level.
+
+
+
+=== Endpoint Snitch
+
+```
+endpoint_snitch
+```

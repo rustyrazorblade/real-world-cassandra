@@ -449,6 +449,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_caching">1.1. Caching</a></li>
 <li><a href="#_scaling_writes">1.2. Scaling Writes</a></li>
 <li><a href="#_high_availability">1.3. High Availability</a></li>
+<li><a href="#_global_scale">1.4. Global Scale</a></li>
 </ul>
 </li>
 </ul>
@@ -523,13 +524,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This book will focus on the latest stable version of Apache Cassandra.  I&#8217;m targeting the most current release, which at the time of this writing is 4.0.  Once the next version is released, this book will be updated.</p>
+<p>This book will focus on the latest stable version of Apache Cassandra.  I&#8217;m targeting the most current release, which at the time of this writing will be 4.0.  Once the next version is released, this book will be updated.</p>
 </div>
 <div class="paragraph">
 <p>This is an opinionated book.  I will not advise using features that perform poorly in production or have so many caveats that failure is almost unavoidable.  This is not the result of marketing, promises, or speculation.</p>
 </div>
 <div class="paragraph">
-<p>This book is the culmination of everything I&#8217;ve learned about running Apache Cassandra in production.  I have been lucky enough to have run it for several years at a startup, worked at DataStax as a technical evangelist, and while working at The Last Pickle I&#8217;ve helped fix and tune a wider variety of Cassandra clusters than almost anyone else on the planet.</p>
+<p>This book is the culmination of everything I&#8217;ve learned about running Apache Cassandra in production.  I have been lucky enough to have run it for several years at a startup, worked at DataStax as a technical evangelist, and while working at The Last Pickle I&#8217;ve helped fix and tune a wider variety of Cassandra clusters than almost anyone else on the planet.  This is not a replacement for the project <a href="https://cassandra.apache.org/doc/latest/">documentation</a>, I don&#8217;t intend to cover every possible feature and configuration options of Cassandra.  My goal to help you run a production cluster.</p>
 </div>
 <div class="paragraph">
 <p>I&#8217;d like to thank a handful of people to have made this book possible.  I&#8217;ve made a lot of friends as the direct result of a technology choice.  A special thanks to Blake Eggleston, Patrick McFadin, Nate McCall, Aaron Morton, Caleb Rackliffe, Luke Tillman, and Jonathan Ellis.  Thank you to many others who I&#8217;ve had the privilege of working with and learning from over the years.</p>
@@ -587,10 +588,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_high_availability"><a class="anchor" href="#_high_availability"></a>1.3. High Availability</h3>
 <div class="paragraph">
-<p>The final challenge of scaling is availability.  All of the changes I&#8217;ve described above are designed to help scale the database by spreading the workload from one server to many.  By eliminating costly queries over large data sets we are able to keep our query times constant, and stick to our SLA.</p>
+<p>The final challenge of scaling is availability.  All of the changes I&#8217;ve described above are designed to help scale the database by spreading the workload from one server to many.  By eliminating costly queries over large data sets we are able to keep our query times constant, and stick to our SLA.  To maximize uptime, we need to replicate our data to multiple servers.  Fortunately replication has been around for a while, so this is pretty easy to</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_global_scale"><a class="anchor" href="#_global_scale"></a>1.4. Global Scale</h3>
+<div class="paragraph">
+<p>One of the unique challenges</p>
 </div>
 <div class="paragraph">
-<p>Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.  There&#8217;s (usually) no need to home roll tools to move data around.</p>
+<p>Locks</p>
+</div>
+<div class="paragraph">
+<p>Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.</p>
+</div>
+<div class="paragraph">
+<p>Lots of teams have started with relational databases and as they have grown in size have adapted them to solve bigger and bigger problems.  In this chapter we&#8217;ll look at how these teams have addressed issues of scale with relational databases and how Cassandra has been designed with those lessons in mind.</p>
 </div>
 </div>
 </div>

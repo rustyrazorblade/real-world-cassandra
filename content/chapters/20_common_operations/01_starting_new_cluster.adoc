@@ -1,2 +1,32 @@
 == Starting a New Cluster
 
+=== Initial Configuration
+
+==== Use Gossipping Property File Snitch
+
+Gossipping Property File Snitch, or GPFS, is used to help Cassandra understand where
+
+<<Endpoint Snitch>>
+
+==== Disable Dynamic Snitch
+
+Dynamic snitch is intended to help keep the cluster performing well.  Unfortunately it falls far short on its promise, and in most cases it causes the cluster to behave more erratically.
+
+I recommend disabling dynamic snitch by setting the following in your `cassandra.yaml`:
+
+```yaml
+dynamic_snitch: false
+```
+
+
+=== Set the Initial Tokens for the First Three Nodes
+
+=== Create A Keyspace
+
+```
+CREATE KEYSPACE myks (
+
+) WITH replication
+```
+
+===
