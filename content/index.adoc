@@ -2,6 +2,8 @@
 :numbered:
 :icons: font
 :sectanchors:
+:google-analytics-account: UA-575989-8
+
 
 = Real World Cassandra
 Jon Haddad <jon@jonhaddad.com>
