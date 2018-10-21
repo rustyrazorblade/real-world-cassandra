@@ -4,3 +4,6 @@ include::01_keyspaces.adoc[]
 
 include::02_tables.adoc[]
 
+include::05_partitions.adoc[]
+
+include::10_rows.adoc[]

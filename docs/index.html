@@ -508,23 +508,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_clustering_keys">14.2. Clustering Keys</a></li>
 </ul>
 </li>
+<li><a href="#_partitions">15. Partitions</a></li>
+<li><a href="#_rows">16. Rows</a></li>
 </ul>
 </li>
 <li><a href="#_common_operations">Common Operations</a>
 <ul class="sectlevel1">
-<li><a href="#_starting_a_new_cluster">15. Starting a New Cluster</a>
+<li><a href="#_starting_a_new_cluster">17. Starting a New Cluster</a>
 <ul class="sectlevel2">
-<li><a href="#_initial_configuration">15.1. Initial Configuration</a></li>
-<li><a href="#_set_the_initial_tokens_for_the_first_three_nodes">15.2. Set the Initial Tokens for the First Three Nodes</a></li>
-<li><a href="#_create_a_keyspace">15.3. Create A Keyspace</a></li>
+<li><a href="#_initial_configuration">17.1. Initial Configuration</a></li>
+<li><a href="#_set_the_initial_tokens_for_the_first_three_nodes">17.2. Set the Initial Tokens for the First Three Nodes</a></li>
+<li><a href="#_create_a_keyspace">17.3. Create A Keyspace</a></li>
 </ul>
 </li>
-<li><a href="#_adding_a_datacenter">16. Adding a Datacenter</a></li>
+<li><a href="#_adding_a_datacenter">18. Adding a Datacenter</a></li>
 </ul>
 </li>
 <li><a href="#_performance_tuning">Performance Tuning</a>
 <ul class="sectlevel1">
-<li><a href="#_tools">17. Tools</a></li>
+<li><a href="#_tools">19. Tools</a></li>
 </ul>
 </li>
 <li><a href="#_glossary">Glossary</a></li>
@@ -1062,14 +1064,26 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_partitions"><a class="anchor" href="#_partitions"></a>15. Partitions</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rows"><a class="anchor" href="#_rows"></a>16. Rows</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 <h1 id="_common_operations" class="sect0"><a class="anchor" href="#_common_operations"></a>Common Operations</h1>
 <div class="sect1">
-<h2 id="_starting_a_new_cluster"><a class="anchor" href="#_starting_a_new_cluster"></a>15. Starting a New Cluster</h2>
+<h2 id="_starting_a_new_cluster"><a class="anchor" href="#_starting_a_new_cluster"></a>17. Starting a New Cluster</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_initial_configuration"><a class="anchor" href="#_initial_configuration"></a>15.1. Initial Configuration</h3>
+<h3 id="_initial_configuration"><a class="anchor" href="#_initial_configuration"></a>17.1. Initial Configuration</h3>
 <div class="sect3">
-<h4 id="_use_gossipping_property_file_snitch"><a class="anchor" href="#_use_gossipping_property_file_snitch"></a>15.1.1. Use Gossipping Property File Snitch</h4>
+<h4 id="_use_gossipping_property_file_snitch"><a class="anchor" href="#_use_gossipping_property_file_snitch"></a>17.1.1. Use Gossipping Property File Snitch</h4>
 <div class="paragraph">
 <p>Gossipping Property File Snitch, or GPFS, is used to help Cassandra understand where</p>
 </div>
@@ -1078,7 +1092,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect3">
-<h4 id="_disable_dynamic_snitch"><a class="anchor" href="#_disable_dynamic_snitch"></a>15.1.2. Disable Dynamic Snitch</h4>
+<h4 id="_disable_dynamic_snitch"><a class="anchor" href="#_disable_dynamic_snitch"></a>17.1.2. Disable Dynamic Snitch</h4>
 <div class="paragraph">
 <p>Dynamic snitch is intended to help keep the cluster performing well.  Unfortunately it falls far short on its promise, and in most cases it causes the cluster to behave more erratically.</p>
 </div>
@@ -1093,11 +1107,11 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect2">
-<h3 id="_set_the_initial_tokens_for_the_first_three_nodes"><a class="anchor" href="#_set_the_initial_tokens_for_the_first_three_nodes"></a>15.2. Set the Initial Tokens for the First Three Nodes</h3>
+<h3 id="_set_the_initial_tokens_for_the_first_three_nodes"><a class="anchor" href="#_set_the_initial_tokens_for_the_first_three_nodes"></a>17.2. Set the Initial Tokens for the First Three Nodes</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_create_a_keyspace"><a class="anchor" href="#_create_a_keyspace"></a>15.3. Create A Keyspace</h3>
+<h3 id="_create_a_keyspace"><a class="anchor" href="#_create_a_keyspace"></a>17.3. Create A Keyspace</h3>
 <div class="paragraph">
 <p>As mentioned in the <a href="#_keyspaces">Keyspaces</a> chapter, a keyspace contains tables and has <a href="#_replication">Replication</a> settings that control where data lives.</p>
 </div>
@@ -1115,14 +1129,14 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_a_datacenter"><a class="anchor" href="#_adding_a_datacenter"></a>16. Adding a Datacenter</h2>
+<h2 id="_adding_a_datacenter"><a class="anchor" href="#_adding_a_datacenter"></a>18. Adding a Datacenter</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <h1 id="_performance_tuning" class="sect0"><a class="anchor" href="#_performance_tuning"></a>Performance Tuning</h1>
 <div class="sect1">
-<h2 id="_tools"><a class="anchor" href="#_tools"></a>17. Tools</h2>
+<h2 id="_tools"><a class="anchor" href="#_tools"></a>19. Tools</h2>
 <div class="sectionbody">
 
 </div>
