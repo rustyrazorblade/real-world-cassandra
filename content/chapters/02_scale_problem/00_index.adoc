@@ -3,4 +3,7 @@
 include::01_rdbms_scale.adoc[]
 
 
-Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.  There's (usually) no need to home roll tools to move data around.
+Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.
+
+Lots of teams have started with relational databases and as they have grown in size have adapted them to solve bigger and bigger problems.  In this chapter we'll look at how these teams have addressed issues of scale with relational databases and how Cassandra has been designed with those lessons in mind.
+
