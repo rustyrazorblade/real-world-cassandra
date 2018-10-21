@@ -23,6 +23,8 @@ dynamic_snitch: false
 
 === Create A Keyspace
 
+As mentioned in the <<Keyspaces>> chapter, a keyspace contains tables and has <<Replication>> settings that control where data lives.
+
 ```
 CREATE KEYSPACE myks (
 

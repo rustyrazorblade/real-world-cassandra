@@ -2,6 +2,7 @@
 
 include::01_shared_nothing.adoc[]
 
+include::02_replication.adoc[]
 
 include::04_writes.adoc[]
 

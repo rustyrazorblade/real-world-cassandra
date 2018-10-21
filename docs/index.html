@@ -467,53 +467,64 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_token_ring">4.1. Token Ring</a></li>
 </ul>
 </li>
-<li><a href="#_how_writes_work">5. How Writes Work</a></li>
-<li><a href="#_how_reads_work">6. How Reads Work</a></li>
-<li><a href="#_consistency_levels">7. Consistency Levels</a>
+<li><a href="#_replication">5. Replication</a>
 <ul class="sectlevel2">
-<li><a href="#_one_and_local_one">7.1. ONE and LOCAL_ONE</a></li>
-<li><a href="#_all">7.2. ALL</a></li>
-<li><a href="#_quorum_and_local_quorum">7.3. QUORUM and LOCAL_QUORUM</a></li>
+<li><a href="#_endpoint_snitch">5.1. Endpoint Snitch</a></li>
+</ul>
+</li>
+<li><a href="#_how_writes_work">6. How Writes Work</a></li>
+<li><a href="#_how_reads_work">7. How Reads Work</a></li>
+<li><a href="#_consistency_levels">8. Consistency Levels</a>
+<ul class="sectlevel2">
+<li><a href="#_one_and_local_one">8.1. ONE and LOCAL_ONE</a></li>
+<li><a href="#_all">8.2. ALL</a></li>
+<li><a href="#_quorum_and_local_quorum">8.3. QUORUM and LOCAL_QUORUM</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_storage_engine">Storage Engine</a>
 <ul class="sectlevel1">
-<li><a href="#_commit_log">8. Commit Log</a></li>
-<li><a href="#_memtable">9. Memtable</a></li>
-<li><a href="#_sstable">10. SSTable</a></li>
-<li><a href="#_compaction">11. Compaction</a>
+<li><a href="#_commit_log">9. Commit Log</a></li>
+<li><a href="#_memtable">10. Memtable</a></li>
+<li><a href="#_sstable">11. SSTable</a></li>
+<li><a href="#_compaction">12. Compaction</a>
 <ul class="sectlevel2">
-<li><a href="#_compaction_strategies">11.1. Compaction Strategies</a></li>
+<li><a href="#_compaction_strategies">12.1. Compaction Strategies</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_data_modeling">Data Modeling</a>
 <ul class="sectlevel1">
-<li><a href="#_keyspaces">12. Keyspaces</a>
+<li><a href="#_keyspaces">13. Keyspaces</a>
 <ul class="sectlevel2">
-<li><a href="#_replication_strategies">12.1. Replication Strategies</a></li>
+<li><a href="#_replication_strategies">13.1. Replication Strategies</a></li>
 </ul>
 </li>
-<li><a href="#_tables">13. Tables</a>
+<li><a href="#_tables">14. Tables</a>
 <ul class="sectlevel2">
-<li><a href="#_partition_key">13.1. Partition Key</a></li>
-<li><a href="#_clustering_keys">13.2. Clustering Keys</a></li>
+<li><a href="#_partition_key">14.1. Partition Key</a></li>
+<li><a href="#_clustering_keys">14.2. Clustering Keys</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_common_operations">Common Operations</a>
 <ul class="sectlevel1">
-<li><a href="#_starting_a_new_cluster">14. Starting a New Cluster</a></li>
-<li><a href="#_adding_a_datacenter">15. Adding a Datacenter</a></li>
+<li><a href="#_starting_a_new_cluster">15. Starting a New Cluster</a>
+<ul class="sectlevel2">
+<li><a href="#_initial_configuration">15.1. Initial Configuration</a></li>
+<li><a href="#_set_the_initial_tokens_for_the_first_three_nodes">15.2. Set the Initial Tokens for the First Three Nodes</a></li>
+<li><a href="#_create_a_keyspace">15.3. Create A Keyspace</a></li>
+</ul>
+</li>
+<li><a href="#_adding_a_datacenter">16. Adding a Datacenter</a></li>
 </ul>
 </li>
 <li><a href="#_performance_tuning">Performance Tuning</a>
 <ul class="sectlevel1">
-<li><a href="#_tools">16. Tools</a></li>
+<li><a href="#_tools">17. Tools</a></li>
 </ul>
 </li>
 <li><a href="#_glossary">Glossary</a></li>
@@ -772,7 +783,23 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_writes_work"><a class="anchor" href="#_how_writes_work"></a>5. How Writes Work</h2>
+<h2 id="_replication"><a class="anchor" href="#_replication"></a>5. Replication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the <a href="#Keyspace">[Keyspace]</a> level.</p>
+</div>
+<div class="sect2">
+<h3 id="_endpoint_snitch"><a class="anchor" href="#_endpoint_snitch"></a>5.1. Endpoint Snitch</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>endpoint_snitch</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_writes_work"><a class="anchor" href="#_how_writes_work"></a>6. How Writes Work</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Write begins at a <a href="#coordinator">[coordinator]</a>.  Every node in the cluster acts as a coordinator, it&#8217;s not a special type of node.</p>
@@ -783,13 +810,13 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_reads_work"><a class="anchor" href="#_how_reads_work"></a>6. How Reads Work</h2>
+<h2 id="_how_reads_work"><a class="anchor" href="#_how_reads_work"></a>7. How Reads Work</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_consistency_levels"><a class="anchor" href="#_consistency_levels"></a>7. Consistency Levels</h2>
+<h2 id="_consistency_levels"><a class="anchor" href="#_consistency_levels"></a>8. Consistency Levels</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Writes can go to any node</p>
@@ -801,19 +828,19 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 <p>In the case of a read, consistency defines the number of nodes that are queried, and in the case of an inconsistency, a read repair is performed.</p>
 </div>
 <div class="sect2">
-<h3 id="_one_and_local_one"><a class="anchor" href="#_one_and_local_one"></a>7.1. ONE and LOCAL_ONE</h3>
+<h3 id="_one_and_local_one"><a class="anchor" href="#_one_and_local_one"></a>8.1. ONE and LOCAL_ONE</h3>
 <div class="paragraph">
 <p>Only one node is required to acknowledge the write for the <a href="#coordinator">[coordinator]</a> to return a success message to the client.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_all"><a class="anchor" href="#_all"></a>7.2. ALL</h3>
+<h3 id="_all"><a class="anchor" href="#_all"></a>8.2. ALL</h3>
 <div class="paragraph">
 <p>All nodes are required to acknowledge the write for the <a href="#coordinator">[coordinator]</a> to return a success message to the client.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quorum_and_local_quorum"><a class="anchor" href="#_quorum_and_local_quorum"></a>7.3. QUORUM and LOCAL_QUORUM</h3>
+<h3 id="_quorum_and_local_quorum"><a class="anchor" href="#_quorum_and_local_quorum"></a>8.3. QUORUM and LOCAL_QUORUM</h3>
 
 </div>
 </div>
@@ -839,7 +866,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_commit_log"><a class="anchor" href="#_commit_log"></a>8. Commit Log</h2>
+<h2 id="_commit_log"><a class="anchor" href="#_commit_log"></a>9. Commit Log</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The commit log is probably one of the more boring aspects of a database but is essential if we want to ensure we&#8217;re able to recover our writes after a node has restarted unexpectedly.  Writes in the commitlog will be replayed when the node starts back up.</p>
@@ -856,7 +883,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_memtable"><a class="anchor" href="#_memtable"></a>9. Memtable</h2>
+<h2 id="_memtable"><a class="anchor" href="#_memtable"></a>10. Memtable</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Think of Cassandra as a big write-back cache.  Writes are only held in memory (and in the commit log), they&#8217;re not written to a permanent data structure right away.  When the cache (memtable) is full, it gets flushed to disk as an <a href="#_sstable">SSTable</a> and is later merged with other SSTables as part of the <a href="#_compaction">Compaction</a> process.</p>
@@ -864,7 +891,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sstable"><a class="anchor" href="#_sstable"></a>10. SSTable</h2>
+<h2 id="_sstable"><a class="anchor" href="#_sstable"></a>11. SSTable</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Data files on disk.</p>
@@ -887,18 +914,18 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect1">
-<h2 id="_compaction"><a class="anchor" href="#_compaction"></a>11. Compaction</h2>
+<h2 id="_compaction"><a class="anchor" href="#_compaction"></a>12. Compaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Compaction is the process of merging sstables.  There seems to be a misconception that compaction is optional, or that it shouldn&#8217;t be running.  This is far from the truth.  On a healthy system receiving writes, expect to see plenty of active compactions.</p>
 </div>
 <div class="sect2">
-<h3 id="_compaction_strategies"><a class="anchor" href="#_compaction_strategies"></a>11.1. Compaction Strategies</h3>
+<h3 id="_compaction_strategies"><a class="anchor" href="#_compaction_strategies"></a>12.1. Compaction Strategies</h3>
 <div class="paragraph">
 <p>Multiple compactions strategies</p>
 </div>
 <div class="sect3">
-<h4 id="_size_tiered_compaction_strategy_stcs"><a class="anchor" href="#_size_tiered_compaction_strategy_stcs"></a>11.1.1. Size Tiered Compaction Strategy (STCS)</h4>
+<h4 id="_size_tiered_compaction_strategy_stcs"><a class="anchor" href="#_size_tiered_compaction_strategy_stcs"></a>12.1.1. Size Tiered Compaction Strategy (STCS)</h4>
 <div class="paragraph">
 <p>default, not great at much</p>
 </div>
@@ -907,7 +934,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect3">
-<h4 id="_leveled_compaction_stategy_lcs"><a class="anchor" href="#_leveled_compaction_stategy_lcs"></a>11.1.2. Leveled Compaction Stategy (LCS)</h4>
+<h4 id="_leveled_compaction_stategy_lcs"><a class="anchor" href="#_leveled_compaction_stategy_lcs"></a>12.1.2. Leveled Compaction Stategy (LCS)</h4>
 <div class="paragraph">
 <p>Leveled</p>
 </div>
@@ -916,7 +943,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect3">
-<h4 id="_time_series_compaction_strategy_twcs"><a class="anchor" href="#_time_series_compaction_strategy_twcs"></a>11.1.3. Time Series Compaction Strategy (TWCS)</h4>
+<h4 id="_time_series_compaction_strategy_twcs"><a class="anchor" href="#_time_series_compaction_strategy_twcs"></a>12.1.3. Time Series Compaction Strategy (TWCS)</h4>
 <div class="paragraph">
 <p>Built originally by Jeff Jirsa, a Cassandra committer.</p>
 </div>
@@ -929,26 +956,26 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 <h1 id="_data_modeling" class="sect0"><a class="anchor" href="#_data_modeling"></a>Data Modeling</h1>
 <div class="sect1">
-<h2 id="_keyspaces"><a class="anchor" href="#_keyspaces"></a>12. Keyspaces</h2>
+<h2 id="_keyspaces"><a class="anchor" href="#_keyspaces"></a>13. Keyspaces</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As I discussed in the <a href="#Replication">[Replication]</a> chapter, the settings on the keyspace determine how data is replicated around the cluster.</p>
+<p>As I discussed in the <a href="#_replication">Replication</a> chapter, the settings on the keyspace determine how data is replicated around the cluster.</p>
 </div>
 <div class="sect2">
-<h3 id="_replication_strategies"><a class="anchor" href="#_replication_strategies"></a>12.1. Replication Strategies</h3>
+<h3 id="_replication_strategies"><a class="anchor" href="#_replication_strategies"></a>13.1. Replication Strategies</h3>
 <div class="sect3">
-<h4 id="_simple_strategy"><a class="anchor" href="#_simple_strategy"></a>12.1.1. Simple Strategy</h4>
+<h4 id="_simple_strategy"><a class="anchor" href="#_simple_strategy"></a>13.1.1. Simple Strategy</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_network_topology_strategy"><a class="anchor" href="#_network_topology_strategy"></a>12.1.2. Network Topology Strategy</h4>
+<h4 id="_network_topology_strategy"><a class="anchor" href="#_network_topology_strategy"></a>13.1.2. Network Topology Strategy</h4>
 
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tables"><a class="anchor" href="#_tables"></a>13. Tables</h2>
+<h2 id="_tables"><a class="anchor" href="#_tables"></a>14. Tables</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Much like a relational database, we create structured tables with schema in Cassandra to store our data.</p>
@@ -974,7 +1001,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect2">
-<h3 id="_partition_key"><a class="anchor" href="#_partition_key"></a>13.1. Partition Key</h3>
+<h3 id="_partition_key"><a class="anchor" href="#_partition_key"></a>14.1. Partition Key</h3>
 <div class="paragraph">
 <p>Partition key can be composed of one or more fields.  These fields are hashed to give us a token, which cooresponds to a position in the <a href="#_token_ring">Token Ring</a>, and that determines the replicas that a given partition lives on.</p>
 </div>
@@ -995,7 +1022,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clustering_keys"><a class="anchor" href="#_clustering_keys"></a>13.2. Clustering Keys</h3>
+<h3 id="_clustering_keys"><a class="anchor" href="#_clustering_keys"></a>14.2. Clustering Keys</h3>
 <div class="paragraph">
 <p>One of the most powerful aspects of Cassandra&#8217;s partitions is that they can contain one or more rows.  Rows in a partition are stored together, sequentially, in the order defined by the clustering keys.</p>
 </div>
@@ -1037,20 +1064,65 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 <h1 id="_common_operations" class="sect0"><a class="anchor" href="#_common_operations"></a>Common Operations</h1>
 <div class="sect1">
-<h2 id="_starting_a_new_cluster"><a class="anchor" href="#_starting_a_new_cluster"></a>14. Starting a New Cluster</h2>
+<h2 id="_starting_a_new_cluster"><a class="anchor" href="#_starting_a_new_cluster"></a>15. Starting a New Cluster</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_initial_configuration"><a class="anchor" href="#_initial_configuration"></a>15.1. Initial Configuration</h3>
+<div class="sect3">
+<h4 id="_use_gossipping_property_file_snitch"><a class="anchor" href="#_use_gossipping_property_file_snitch"></a>15.1.1. Use Gossipping Property File Snitch</h4>
+<div class="paragraph">
+<p>Gossipping Property File Snitch, or GPFS, is used to help Cassandra understand where</p>
+</div>
+<div class="paragraph">
+<p><a href="#_endpoint_snitch">Endpoint Snitch</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_disable_dynamic_snitch"><a class="anchor" href="#_disable_dynamic_snitch"></a>15.1.2. Disable Dynamic Snitch</h4>
+<div class="paragraph">
+<p>Dynamic snitch is intended to help keep the cluster performing well.  Unfortunately it falls far short on its promise, and in most cases it causes the cluster to behave more erratically.</p>
+</div>
+<div class="paragraph">
+<p>I recommend disabling dynamic snitch by setting the following in your <code>cassandra.yaml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">dynamic_snitch: false</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_the_initial_tokens_for_the_first_three_nodes"><a class="anchor" href="#_set_the_initial_tokens_for_the_first_three_nodes"></a>15.2. Set the Initial Tokens for the First Three Nodes</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_create_a_keyspace"><a class="anchor" href="#_create_a_keyspace"></a>15.3. Create A Keyspace</h3>
+<div class="paragraph">
+<p>As mentioned in the <a href="#_keyspaces">Keyspaces</a> chapter, a keyspace contains tables and has <a href="#_replication">Replication</a> settings that control where data lives.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>CREATE KEYSPACE myks (
+
+) WITH replication</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>===</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_a_datacenter"><a class="anchor" href="#_adding_a_datacenter"></a>15. Adding a Datacenter</h2>
+<h2 id="_adding_a_datacenter"><a class="anchor" href="#_adding_a_datacenter"></a>16. Adding a Datacenter</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <h1 id="_performance_tuning" class="sect0"><a class="anchor" href="#_performance_tuning"></a>Performance Tuning</h1>
 <div class="sect1">
-<h2 id="_tools"><a class="anchor" href="#_tools"></a>16. Tools</h2>
+<h2 id="_tools"><a class="anchor" href="#_tools"></a>17. Tools</h2>
 <div class="sectionbody">
 
 </div>
