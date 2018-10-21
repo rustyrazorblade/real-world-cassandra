@@ -31,4 +31,3 @@ CREATE KEYSPACE myks (
 ) WITH replication
 ```
 
-===
