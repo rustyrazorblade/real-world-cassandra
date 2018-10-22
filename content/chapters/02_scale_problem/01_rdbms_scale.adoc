@@ -40,7 +40,7 @@ The final challenge of scaling is availability.  All of the changes I've describ
 
 === Global Scale
 
-One of the unique challenges
+One of the most difficult challenges that needs to be solved is working at a global (and possibly planetary) scale.
 
 Locks
 
