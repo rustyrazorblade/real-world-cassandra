@@ -10,7 +10,7 @@ require 'asciidoctor/extensions' unless RUBY_ENGINE == 'opal'
 Asciidoctor::Extensions.register do
   if @document.basebackend? 'html'
     docinfo_processor do
-      at_location :footer
+      at_location :head
       process do |doc|
         next unless (ga_account_id = doc.attr 'google-analytics-account')
         %(
