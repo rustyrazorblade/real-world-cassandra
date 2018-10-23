@@ -617,10 +617,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_global_scale"><a class="anchor" href="#_global_scale"></a>1.4. Global Scale</h3>
 <div class="paragraph">
-<p>One of the most difficult challenges that needs to be solved is working at a global (and possibly planetary) scale.</p>
+<p>One of the most difficult challenges that needs to be solved is working at a global (and possibly planetary) scale.  Concurrency has always been a difficult problem to tackle.</p>
 </div>
 <div class="paragraph">
-<p>Locks</p>
+<p>Locks are one way of ensuring writes don&#8217;t conflict, but the problem gets harder as datacenters become further and further apart.  We don&#8217;t usually need to think about the limitations of the speed of light, but when trying to coordinate potentially conflicting updates to individual rows in a database we need to start considering the round trip costs.</p>
 </div>
 <div class="paragraph">
 <p>Cassandra is designed to address the needs of rapid growth, scaling both reads and writes while ensuring uptime.</p>
