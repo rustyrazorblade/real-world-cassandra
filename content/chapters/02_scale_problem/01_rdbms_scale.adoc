@@ -42,6 +42,6 @@ The final challenge of scaling is availability.  All of the changes I've describ
 
 One of the most difficult challenges that needs to be solved is working at a global (and possibly planetary) scale.  Concurrency has always been a difficult problem to tackle.
 
-Locks are one way of ensuring writes don't conflict, but the problem gets harder as datacenters become further and further apart.  We don't usually need to think about the limitations of the speed of light, but when trying to coordinate potentially conflicting updates to individual rows in a database we need to start considering the round trip costs.  
+Locks are one way of ensuring writes don't conflict, but the problem gets harder as datacenters become further and further apart.  We don't usually need to think about the limitations of the speed of light, but when trying to coordinate potentially conflicting updates to individual rows in a database we need to start considering the round trip costs.
 
 
