@@ -11,9 +11,23 @@ TIP: It's easy to want to use epic hardware when setting up your Cassandra clust
 
 === Token Ring
 
-distributed hash table
 
-each node has one or more tokens
+At a high level, Cassandra can be thought of as a distributed hash table.  Every row of data, like a relational database, contains a <<Primary Key>>.  The primary key has two components, a <<Partition Key>> and zero or more <<Clustering Keys>>.
+
+To determine which <<Replicas>> a partition lives on, we take a hash of all the components of the key, and that is used to generate a <<Token>>.
+
+The default partitioner in modern Cassandra is the <<Murmur3Partitioner>>.  There's no practical reason to change this other than if your cluster has been running since before Murmur3Partitioner was the default.
+
+Murmur3Partitioner will generate a token between -2 ^ 63 and 2 ^ 63 - 1
+
+Each node has at least 1 token.
+
+More tokens means more peers.  Most keyspaces use an RF of 3.  Each token gives RF+1 peers.
+
+I recommend setting `num_tokens:4` and use `allocate_tokens_for_keyspace` to ensure even distribution of data throughout the ring.
+
+
+
 
 
 

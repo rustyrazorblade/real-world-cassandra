@@ -786,10 +786,25 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 <div class="sect2">
 <h3 id="_token_ring"><a class="anchor" href="#_token_ring"></a>4.1. Token Ring</h3>
 <div class="paragraph">
-<p>distributed hash table</p>
+<p>At a high level, Cassandra can be thought of as a distributed hash table.  Every row of data, like a relational database, contains a <a href="#Primary Key">[Primary Key]</a>.  The primary key has two components, a <a href="#_partition_key">Partition Key</a> and zero or more <a href="#_clustering_keys">Clustering Keys</a>.</p>
 </div>
 <div class="paragraph">
-<p>each node has one or more tokens</p>
+<p>To determine which <a href="#Replicas">[Replicas]</a> a partition lives on, we take a hash of all the components of the key, and that is used to generate a <a href="#Token">[Token]</a>.</p>
+</div>
+<div class="paragraph">
+<p>The default partitioner in modern Cassandra is the <a href="#Murmur3Partitioner">[Murmur3Partitioner]</a>.  There&#8217;s no practical reason to change this other than if your cluster has been running since before Murmur3Partitioner was the default.</p>
+</div>
+<div class="paragraph">
+<p>Murmur3Partitioner will generate a token between -2 ^ 63 and 2 ^ 63 - 1</p>
+</div>
+<div class="paragraph">
+<p>Each node has at least 1 token.</p>
+</div>
+<div class="paragraph">
+<p>More tokens means more peers.  Most keyspaces use an RF of 3.  Each token gives RF+1 peers.</p>
+</div>
+<div class="paragraph">
+<p>I recommend setting <code>num_tokens:4</code> and use <code>allocate_tokens_for_keyspace</code> to ensure even distribution of data throughout the ring.</p>
 </div>
 </div>
 </div>
@@ -817,7 +832,50 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 <p>Write begins at a <a href="#coordinator">[coordinator]</a>.  Every node in the cluster acts as a coordinator, it&#8217;s not a special type of node.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#Consistency Level">[Consistency Level]</a></p>
+<p>The <a href="#Consistency Level">[Consistency Level]</a> tells the coordinator how many machines much acknowledge a request before returning to the client.</p>
+</div>
+<div class="paragraph">
+<p>If the request meets the required <a href="#Consistency Level">[Consistency Level]</a> and hasn&#8217;t timed out, the coordinator returns the result of the query to the coodinator.</p>
+</div>
+<div class="paragraph">
+<p>In the case of a write, also known as a mutation, our <a href="#Coordinator">[Coordinator]</a> first finds all the nodes that are responsible for the partition key in the <a href="#_token_ring">Token Ring</a>.</p>
+</div>
+<div class="paragraph">
+<p>It then asynchronously sends the write to all the nodes that are a <a href="#Replica">[Replica]</a> for this key.  It waits for enough nodes to reply to satisfy the <a href="#Consistency Level">[Consistency Level]</a>.</p>
+</div>
+<div class="paragraph">
+<p>If a node is not able to send the request to add nodes, the coordinator will store a <a href="#Hint">[Hint]</a> with the mutation information, which will be sent to the <a href="#Replica">[Replica]</a> when it is back online.</p>
+</div>
+<div class="paragraph">
+<p>This is one of the reasons you&#8217;ll often hear the term <a href="#Eventual Consistency">[Eventual Consistency]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Some fun information:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It&#8217;s possible for a request to return a <code>WriteTimeoutException</code> to the client, but the data exists on one or more of the Replicas.</p>
+</li>
+<li>
+<p>You have no way of knowing which nodes were successful in the write.</p>
+</li>
+<li>
+<p>You should</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Remember to configure the driver&#8217;s retry policy for your application&#8217;s needs.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -853,7 +911,18 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 </div>
 <div class="sect2">
 <h3 id="_quorum_and_local_quorum"><a class="anchor" href="#_quorum_and_local_quorum"></a>8.3. QUORUM and LOCAL_QUORUM</h3>
-
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Use the lowest consistency level possible to achieve the best uptime.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1077,7 +1146,9 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 <div class="sect1">
 <h2 id="_partitions"><a class="anchor" href="#_partitions"></a>15. Partitions</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>A partition is a group of rows, identified by the <a href="#_partition_key">Partition Key</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect1">

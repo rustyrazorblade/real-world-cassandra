@@ -2,7 +2,25 @@
 
 Write begins at a <<coordinator>>.  Every node in the cluster acts as a coordinator, it's not a special type of node.
 
+The <<Consistency Level>> tells the coordinator how many machines much acknowledge a request before returning to the client.
 
-The <<Consistency Level>>
+If the request meets the required <<Consistency Level>> and hasn't timed out, the coordinator returns the result of the query to the coodinator.
+
+In the case of a write, also known as a mutation, our <<Coordinator>> first finds all the nodes that are responsible for the partition key in the <<Token Ring>>.
+
+It then asynchronously sends the write to all the nodes that are a <<Replica>> for this key.  It waits for enough nodes to reply to satisfy the <<Consistency Level>>.
+
+If a node is not able to send the request to add nodes, the coordinator will store a <<Hint>> with the mutation information, which will be sent to the <<Replica>> when it is back online.
+
+This is one of the reasons you'll often hear the term <<Eventual Consistency>>.
+
+Some fun information:
+
+1. It's possible for a request to return a `WriteTimeoutException` to the client, but the data exists on one or more of the Replicas.
+2. You have no way of knowing which nodes were successful in the write.
+3. You should
+
+
+TIP: Remember to configure the driver's retry policy for your application's needs.
 
 

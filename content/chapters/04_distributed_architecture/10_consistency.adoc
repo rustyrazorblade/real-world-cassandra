@@ -21,3 +21,5 @@ All nodes are required to acknowledge the write for the <<coordinator>> to retur
 
 
 
+TIP: Use the lowest consistency level possible to achieve the best uptime.
+
