@@ -1,5 +1,12 @@
 = Data Modeling
 
+In this chapter, we'll dive into the world of data modeling with Cassandra.
+
+include::01_schema.adoc[]
+
+
+include::01_cell.adoc[]
+
 include::01_keyspaces.adoc[]
 
 include::02_tables.adoc[]

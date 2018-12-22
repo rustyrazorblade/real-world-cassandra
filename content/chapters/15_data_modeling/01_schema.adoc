@@ -1,0 +1,9 @@
+== Schema
+
+Like a RDBMS, Cassandra utilizes a schema, giving meaning to the data we're storing.  Rather than just a series of bytes, we can store integers, strings of text, dates, etc.
+
+We can create a table like this:
+
+include::examples/schema.adoc[]
+
+This chapter will show you exactly what's happening with the above statement and what it means for our data on disk.

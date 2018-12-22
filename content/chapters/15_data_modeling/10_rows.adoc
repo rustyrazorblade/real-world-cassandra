@@ -1,1 +1,4 @@
 == Rows
+
+Looking back at our schema:
+

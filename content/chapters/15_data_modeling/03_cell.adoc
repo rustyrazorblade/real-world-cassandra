@@ -1,0 +1,5 @@
+== Cells
+
+The smallest type of value in Cassandra is called the cell.  A cell is a single value, such as an integer or some text.  An example of a cell might be the value "California" for a city or "Jon" for a name.
+
+Cassandra has some metadata associated with each cell.  For every value that's written, we store the time the cell was written and an optional TTL for the value.  When we write data, we can provide a TTL, and the data will get cleaned up automatically.  This is great on a small scale for short lived user sessions, or longer lived time series.  It's incredibly useful to have a system that automatically prunes old data.  We'll get into TTLs later on.
