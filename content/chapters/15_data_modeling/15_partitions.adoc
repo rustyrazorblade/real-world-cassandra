@@ -1,3 +1,0 @@
-== Partitions
-
-A partition is a group of rows, identified by the <<Partition Key>>.
