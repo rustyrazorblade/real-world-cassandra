@@ -1,15 +1,8 @@
-== Rows
-
-Looking back at our first schema:
-
-include::examples/schema.adoc[]
-
-
-=== Primary Key
+== Primary Key
 
 
 
-==== Partition Key
+=== Partition Key
 
 
 Partition key can be composed of one or more fields.  These fields are hashed to give us a token, which cooresponds to a position in the <<Token Ring>>, and that determines the replicas that a given partition lives on.
@@ -26,7 +19,7 @@ CREATE TABLE mytable (
 )
 ```
 
-==== Clustering Keys
+=== Clustering Keys
 
 One of the most powerful aspects of Cassandra's partitions is that they can contain one or more rows.  Rows in a partition are stored together, sequentially, in the order defined by the clustering keys.
 
@@ -63,8 +56,4 @@ CREATE TABLE sensor_data (
   data blob
 ) PRIMARY KEY (id, ts);
 ```
-
-
-
-
 

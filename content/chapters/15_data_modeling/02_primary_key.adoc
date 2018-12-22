@@ -1,4 +1,0 @@
-== Primary Key
-
-
-=== Partition Key
