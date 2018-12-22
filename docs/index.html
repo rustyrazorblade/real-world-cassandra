@@ -507,36 +507,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_data_modeling">Data Modeling</a>
 <ul class="sectlevel1">
-<li><a href="#_keyspaces">13. Keyspaces</a>
-<ul class="sectlevel2">
-<li><a href="#_replication_strategies">13.1. Replication Strategies</a></li>
-</ul>
-</li>
-<li><a href="#_tables">14. Tables</a>
+<li><a href="#_schema">13. Schema</a></li>
+<li><a href="#_primary_key">14. Primary Key</a>
 <ul class="sectlevel2">
 <li><a href="#_partition_key">14.1. Partition Key</a></li>
-<li><a href="#_clustering_keys">14.2. Clustering Keys</a></li>
 </ul>
 </li>
-<li><a href="#_partitions">15. Partitions</a></li>
+<li><a href="#_cells">15. Cells</a></li>
 <li><a href="#_rows">16. Rows</a></li>
+<li><a href="#_partitions">17. Partitions</a></li>
+<li><a href="#_tables">18. Tables</a>
+<ul class="sectlevel2">
+<li><a href="#_partition_key_2">18.1. Partition Key</a></li>
+<li><a href="#_clustering_keys">18.2. Clustering Keys</a></li>
+</ul>
+</li>
+<li><a href="#_keyspaces">19. Keyspaces</a>
+<ul class="sectlevel2">
+<li><a href="#_replication_strategies">19.1. Replication Strategies</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_common_operations">Common Operations</a>
 <ul class="sectlevel1">
-<li><a href="#_starting_a_new_cluster">17. Starting a New Cluster</a>
+<li><a href="#_starting_a_new_cluster">20. Starting a New Cluster</a>
 <ul class="sectlevel2">
-<li><a href="#_initial_configuration">17.1. Initial Configuration</a></li>
-<li><a href="#_set_the_initial_tokens_for_the_first_three_nodes">17.2. Set the Initial Tokens for the First Three Nodes</a></li>
-<li><a href="#_create_a_keyspace">17.3. Create A Keyspace</a></li>
+<li><a href="#_initial_configuration">20.1. Initial Configuration</a></li>
+<li><a href="#_set_the_initial_tokens_for_the_first_three_nodes">20.2. Set the Initial Tokens for the First Three Nodes</a></li>
+<li><a href="#_create_a_keyspace">20.3. Create A Keyspace</a></li>
 </ul>
 </li>
-<li><a href="#_adding_a_datacenter">18. Adding a Datacenter</a></li>
+<li><a href="#_adding_a_datacenter">21. Adding a Datacenter</a></li>
 </ul>
 </li>
 <li><a href="#_performance_tuning">Performance Tuning</a>
 <ul class="sectlevel1">
-<li><a href="#_tools">19. Tools</a></li>
+<li><a href="#_tools">22. Tools</a></li>
 </ul>
 </li>
 <li><a href="#_glossary">Glossary</a></li>
@@ -786,7 +793,7 @@ It&#8217;s easy to want to use epic hardware when setting up your Cassandra clus
 <div class="sect2">
 <h3 id="_token_ring"><a class="anchor" href="#_token_ring"></a>4.1. Token Ring</h3>
 <div class="paragraph">
-<p>At a high level, Cassandra can be thought of as a distributed hash table.  Every row of data, like a relational database, contains a <a href="#Primary Key">[Primary Key]</a>.  The primary key has two components, a <a href="#_partition_key">Partition Key</a> and zero or more <a href="#_clustering_keys">Clustering Keys</a>.</p>
+<p>At a high level, Cassandra can be thought of as a distributed hash table.  Every row of data, like a relational database, contains a <a href="#_primary_key">Primary Key</a>.  The primary key has two components, a <a href="#_partition_key">Partition Key</a> and zero or more <a href="#_clustering_keys">Clustering Keys</a>.</p>
 </div>
 <div class="paragraph">
 <p>To determine which <a href="#Replicas">[Replicas]</a> a partition lives on, we take a hash of all the components of the key, and that is used to generate a <a href="#Token">[Token]</a>.</p>
@@ -1036,27 +1043,79 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <h1 id="_data_modeling" class="sect0"><a class="anchor" href="#_data_modeling"></a>Data Modeling</h1>
+<div class="openblock partintro">
+<div class="content">
+In this chapter, we&#8217;ll dive into the world of data modeling with Cassandra.
+</div>
+</div>
 <div class="sect1">
-<h2 id="_keyspaces"><a class="anchor" href="#_keyspaces"></a>13. Keyspaces</h2>
+<h2 id="_schema"><a class="anchor" href="#_schema"></a>13. Schema</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As I discussed in the <a href="#_replication">Replication</a> chapter, the settings on the keyspace determine how data is replicated around the cluster.</p>
+<p>Like a RDBMS, Cassandra utilizes a schema, giving meaning to the data we&#8217;re storing.  Rather than just a series of bytes, we can store integers, strings of text, dates, etc.</p>
 </div>
+<div class="paragraph">
+<p>We can create a table like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>CREATE TABLE mytable (
+    id int primary key,
+    value text
+);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This chapter will show you exactly what&#8217;s happening with the above statement and what it means for our data on disk.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_primary_key"><a class="anchor" href="#_primary_key"></a>14. Primary Key</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_replication_strategies"><a class="anchor" href="#_replication_strategies"></a>13.1. Replication Strategies</h3>
-<div class="sect3">
-<h4 id="_simple_strategy"><a class="anchor" href="#_simple_strategy"></a>13.1.1. Simple Strategy</h4>
+<h3 id="_partition_key"><a class="anchor" href="#_partition_key"></a>14.1. Partition Key</h3>
 
 </div>
-<div class="sect3">
-<h4 id="_network_topology_strategy"><a class="anchor" href="#_network_topology_strategy"></a>13.1.2. Network Topology Strategy</h4>
-
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cells"><a class="anchor" href="#_cells"></a>15. Cells</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The smallest type of value in Cassandra is called the cell.  A cell is a single value, such as an integer or some text.  An example of a cell might be the value "California" for a city or "Jon" for a name.</p>
+</div>
+<div class="paragraph">
+<p>Cassandra has some metadata associated with each cell.  For every value that&#8217;s written, we store the time the cell was written and an optional TTL for the value.  When we write data, we can provide a TTL, and the data will get cleaned up automatically.  This is great on a small scale for short lived user sessions, or longer lived time series.  It&#8217;s incredibly useful to have a system that automatically prunes old data.  We&#8217;ll get into TTLs later on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rows"><a class="anchor" href="#_rows"></a>16. Rows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Looking back at our first schema:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>CREATE TABLE mytable (
+    id int primary key,
+    value text
+);</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tables"><a class="anchor" href="#_tables"></a>14. Tables</h2>
+<h2 id="_partitions"><a class="anchor" href="#_partitions"></a>17. Partitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A partition is a group of rows, identified by the <a href="#_partition_key">Partition Key</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tables"><a class="anchor" href="#_tables"></a>18. Tables</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Much like a relational database, we create structured tables with schema in Cassandra to store our data.</p>
@@ -1082,7 +1141,7 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_partition_key"><a class="anchor" href="#_partition_key"></a>14.1. Partition Key</h3>
+<h3 id="_partition_key_2"><a class="anchor" href="#_partition_key_2"></a>18.1. Partition Key</h3>
 <div class="paragraph">
 <p>Partition key can be composed of one or more fields.  These fields are hashed to give us a token, which cooresponds to a position in the <a href="#_token_ring">Token Ring</a>, and that determines the replicas that a given partition lives on.</p>
 </div>
@@ -1103,7 +1162,7 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clustering_keys"><a class="anchor" href="#_clustering_keys"></a>14.2. Clustering Keys</h3>
+<h3 id="_clustering_keys"><a class="anchor" href="#_clustering_keys"></a>18.2. Clustering Keys</h3>
 <div class="paragraph">
 <p>One of the most powerful aspects of Cassandra&#8217;s partitions is that they can contain one or more rows.  Rows in a partition are stored together, sequentially, in the order defined by the clustering keys.</p>
 </div>
@@ -1144,27 +1203,32 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_partitions"><a class="anchor" href="#_partitions"></a>15. Partitions</h2>
+<h2 id="_keyspaces"><a class="anchor" href="#_keyspaces"></a>19. Keyspaces</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A partition is a group of rows, identified by the <a href="#_partition_key">Partition Key</a>.</p>
+<p>As I discussed in the <a href="#_replication">Replication</a> chapter, the settings on the keyspace determine how data is replicated around the cluster.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_rows"><a class="anchor" href="#_rows"></a>16. Rows</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_replication_strategies"><a class="anchor" href="#_replication_strategies"></a>19.1. Replication Strategies</h3>
+<div class="sect3">
+<h4 id="_simple_strategy"><a class="anchor" href="#_simple_strategy"></a>19.1.1. Simple Strategy</h4>
 
+</div>
+<div class="sect3">
+<h4 id="_network_topology_strategy"><a class="anchor" href="#_network_topology_strategy"></a>19.1.2. Network Topology Strategy</h4>
+
+</div>
+</div>
 </div>
 </div>
 <h1 id="_common_operations" class="sect0"><a class="anchor" href="#_common_operations"></a>Common Operations</h1>
 <div class="sect1">
-<h2 id="_starting_a_new_cluster"><a class="anchor" href="#_starting_a_new_cluster"></a>17. Starting a New Cluster</h2>
+<h2 id="_starting_a_new_cluster"><a class="anchor" href="#_starting_a_new_cluster"></a>20. Starting a New Cluster</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_initial_configuration"><a class="anchor" href="#_initial_configuration"></a>17.1. Initial Configuration</h3>
+<h3 id="_initial_configuration"><a class="anchor" href="#_initial_configuration"></a>20.1. Initial Configuration</h3>
 <div class="sect3">
-<h4 id="_use_gossipping_property_file_snitch"><a class="anchor" href="#_use_gossipping_property_file_snitch"></a>17.1.1. Use Gossipping Property File Snitch</h4>
+<h4 id="_use_gossipping_property_file_snitch"><a class="anchor" href="#_use_gossipping_property_file_snitch"></a>20.1.1. Use Gossipping Property File Snitch</h4>
 <div class="paragraph">
 <p>Gossipping Property File Snitch, or GPFS, is used to help Cassandra understand where</p>
 </div>
@@ -1173,7 +1237,7 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_disable_dynamic_snitch"><a class="anchor" href="#_disable_dynamic_snitch"></a>17.1.2. Disable Dynamic Snitch</h4>
+<h4 id="_disable_dynamic_snitch"><a class="anchor" href="#_disable_dynamic_snitch"></a>20.1.2. Disable Dynamic Snitch</h4>
 <div class="paragraph">
 <p>Dynamic snitch is intended to help keep the cluster performing well.  Unfortunately it falls far short on its promise, and in most cases it causes the cluster to behave more erratically.</p>
 </div>
@@ -1188,11 +1252,11 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_set_the_initial_tokens_for_the_first_three_nodes"><a class="anchor" href="#_set_the_initial_tokens_for_the_first_three_nodes"></a>17.2. Set the Initial Tokens for the First Three Nodes</h3>
+<h3 id="_set_the_initial_tokens_for_the_first_three_nodes"><a class="anchor" href="#_set_the_initial_tokens_for_the_first_three_nodes"></a>20.2. Set the Initial Tokens for the First Three Nodes</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_create_a_keyspace"><a class="anchor" href="#_create_a_keyspace"></a>17.3. Create A Keyspace</h3>
+<h3 id="_create_a_keyspace"><a class="anchor" href="#_create_a_keyspace"></a>20.3. Create A Keyspace</h3>
 <div class="paragraph">
 <p>As mentioned in the <a href="#_keyspaces">Keyspaces</a> chapter, a keyspace contains tables and has <a href="#_replication">Replication</a> settings that control where data lives.</p>
 </div>
@@ -1207,14 +1271,14 @@ Use the lowest consistency level possible to achieve the best uptime.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adding_a_datacenter"><a class="anchor" href="#_adding_a_datacenter"></a>18. Adding a Datacenter</h2>
+<h2 id="_adding_a_datacenter"><a class="anchor" href="#_adding_a_datacenter"></a>21. Adding a Datacenter</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <h1 id="_performance_tuning" class="sect0"><a class="anchor" href="#_performance_tuning"></a>Performance Tuning</h1>
 <div class="sect1">
-<h2 id="_tools"><a class="anchor" href="#_tools"></a>19. Tools</h2>
+<h2 id="_tools"><a class="anchor" href="#_tools"></a>22. Tools</h2>
 <div class="sectionbody">
 
 </div>

@@ -4,13 +4,16 @@ In this chapter, we'll dive into the world of data modeling with Cassandra.
 
 include::01_schema.adoc[]
 
+include::02_primary_key.adoc[]
 
-include::01_cell.adoc[]
-
-include::01_keyspaces.adoc[]
-
-include::02_tables.adoc[]
-
-include::05_partitions.adoc[]
+include::06_cell.adoc[]
 
 include::10_rows.adoc[]
+
+
+include::15_partitions.adoc[]
+
+include::17_tables.adoc[]
+
+
+include::20_keyspaces.adoc[]
