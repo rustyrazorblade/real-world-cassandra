@@ -6,12 +6,8 @@ include::01_schema.adoc[]
 
 include::06_cell.adoc[]
 
-include::08_primary_key.adoc[]
-
 include::10_rows.adoc[]
 
-
-include::15_partitions.adoc[]
 
 include::17_tables.adoc[]
 
