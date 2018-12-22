@@ -1,4 +1,8 @@
 == Rows
 
-Looking back at our schema:
+Looking back at our first schema:
+
+include::examples/schema.adoc[]
+
+
 
